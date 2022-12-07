@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardMain"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="-40dp"
+                app:cardBackgroundColor="@color/purple_200"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                card_view:cardCornerRadius="20dp"
+                card_view:cardElevation="0dp" >
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="218dp"
+                    android:layout_height="87dp"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="40dp"
+                    card_view:srcCompat="@drawable/logowhite" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="60dp"
+                    android:onClick="toProfile"
+                    card_view:srcCompat="@drawable/profile" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="12dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="27dp"
+                android:text="°"
+                android:textColor="@color/purple_200"
+                android:textSize="30dp"
+                app:layout_constraintEnd_toStartOf="@+id/textView2"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardMain" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="126dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:textColor="@color/text"
+                android:text="Что нового?"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.119"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardMain" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                tools:listitem="@layout/recycler_news"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/purple_200"
+                app:cardCornerRadius="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvNews"
+                app:layout_constraintVertical_bias="0.0">
+
+                <TextView
+                    android:id="@+id/textViewMedicalTit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="О нас:"
+                    android:textColor="@color/white"
+                    android:textSize="40dp" />
+
+                <TextView
+                    android:id="@+id/textViewMedicalAchivments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="80dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Достижения"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAchivments"
+                    android:layout_width="359dp"
+                    android:layout_height="480dp"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginTop="110dp"
+                    tools:listitem="@layout/recycler_info"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardService"
+                    android:layout_width="match_parent"
+                    android:layout_height="566dp"
+                    android:layout_marginTop="590dp"
+                    app:cardBackgroundColor="@color/purple_900"
+                    app:cardCornerRadius="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvNews">
+
+
+                    <TextView
+                        android:id="@+id/textViewMedicalService"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="Предоставляемые услуги:"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvService"
+                        android:layout_width="359dp"
+                        android:layout_height="487dp"
+                        android:layout_marginLeft="23dp"
+                        android:layout_marginTop="60dp"
+                        tools:listitem="@layout/recycler_info"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2"/>
+                </androidx.cardview.widget.CardView>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textViewContactDot"
+                android:layout_width="12dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="43dp"
+                android:text="°"
+                android:textColor="@color/purple_200"
+                android:textSize="30dp"
+                app:layout_constraintEnd_toStartOf="@+id/textView2"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo" />
+
+            <TextView
+                android:id="@+id/textViewContact"
+                android:layout_width="235dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:text="Как с нами связаться:"
+                android:textColor="@color/text"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.17"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo" />
+
+            <TextView
+                android:id="@+id/textViewContacts"
+                android:layout_width="336dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:gravity="left"
+                android:text="Горячая линия: +77478256167\n\nЮридический адрес:\nМуниципальный округ Измайловское, Адмиралтейский район, Санкт-Петербург, д 7, ОП 10."
+                android:textColor="@color/text"
+                android:textSize="15dp"
+                app:layout_constraintHorizontal_bias="0.453"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/textViewContact" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardPolicy"
+                android:layout_width="match_parent"
+                android:layout_height="143dp"
+                android:layout_marginTop="43dp"
+                app:cardBackgroundColor="@color/text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewContacts"
+                app:layout_constraintVertical_bias="0.0">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="355dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="100dp"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    android:text="Все права зарегистрированы и идея приложения является уникальной для уровня своего патента."
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center_horizontal"
+                    card_view:srcCompat="@drawable/twitter" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center_horizontal"
+                    card_view:srcCompat="@drawable/telegram" />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="100dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center_horizontal"
+                    card_view:srcCompat="@drawable/spotify" />
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

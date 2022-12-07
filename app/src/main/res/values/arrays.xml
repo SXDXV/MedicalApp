@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="clinique">
+        <item>"Бассейная улица, 63, Санкт-Петербург, 196211"</item>
+        <item>"улица Маршала Захарова, 34"</item>
+        <item>"улица Тамбасова, 10к1"</item>
+        <item>"проспект Народного Ополчения, 207"</item>
+    </array>
+</resources>
