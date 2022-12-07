@@ -1,9 +1,11 @@
 package com.example.medicalapp;
 
 public class Person {
-    private String name, town, date, email, phone, snils, passport;
+    private int id;
+    private String name, town, date, email, phone, snils, passport, password;
 
-    public Person(String name, String town, String date, String email, String phone, String snils, String passport) {
+    public Person(int id, String name, String town, String date, String email, String phone, String snils, String passport, String password) {
+        this.id = id;
         this.name = name;
         this.town = town;
         this.date = date;
@@ -11,6 +13,15 @@ public class Person {
         this.phone = phone;
         this.snils = snils;
         this.passport = passport;
+        this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -67,5 +78,13 @@ public class Person {
 
     public void setPassport(String passport) {
         this.passport = passport;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
