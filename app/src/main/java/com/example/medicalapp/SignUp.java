@@ -15,11 +15,15 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class SignUp extends AppCompatActivity {
 
@@ -76,20 +80,20 @@ public class SignUp extends AppCompatActivity {
 
     public void shareToBase(){
         try {
+            database = FirebaseDatabase.getInstance().getReference("Users");
+            Random rand = new Random();
+
             Person demoPerson = new Person(
-                    1,
+                    rand.nextInt(1000000000),
                     String.valueOf(name.getEditText().getText()),
-                    null,
+                    "",
                     String.valueOf(date.getEditText().getText()),
                     String.valueOf(email.getEditText().getText()),
-                    null,
-                    null,
-                    null,
+                    "",
+                    "",
+                    "",
                     String.valueOf(pass.getEditText().getText())
             );
-
-            database = FirebaseDatabase.getInstance().getReference(String.valueOf(demoPerson.getId()));
-
 //            user.put("name",String.valueOf(name.getEditText().getText()));
 //            user.put("town",null);
 //            user.put("date",String.valueOf(date.getEditText().getText()));
@@ -101,7 +105,7 @@ public class SignUp extends AppCompatActivity {
 
             //myRef.setValue(user);
             //database.child("users").setValue(demoPerson);
-            database.push().setValue(demoPerson);
+            database.child(String.valueOf(demoPerson.getId())).setValue(demoPerson);
         }catch (Exception exception){
             Toast toast = Toast.makeText(getApplicationContext(),
                     exception.toString(), Toast.LENGTH_SHORT);

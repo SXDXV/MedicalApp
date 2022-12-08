@@ -4,6 +4,9 @@ public class Person {
     private int id;
     private String name, town, date, email, phone, snils, passport, password;
 
+    public Person() {
+    }
+
     public Person(int id, String name, String town, String date, String email, String phone, String snils, String passport, String password) {
         this.id = id;
         this.name = name;
