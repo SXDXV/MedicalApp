@@ -27,6 +27,8 @@ public class Main extends AppCompatActivity {
     Intent newCall;
     Intent serviceCall;
 
+    String id;
+
     RecyclerView rvServ;
     RecyclerView rvAch;
 
@@ -34,6 +36,8 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        id = getIntent().getStringExtra("id");
 
         newCall = new Intent(this, NewsPaper.class);
         serviceCall = new Intent(this, ServiseChoose.class);
@@ -91,6 +95,7 @@ public class Main extends AppCompatActivity {
 
     public void toProfile(View view){
         Intent profile = new Intent(this, Profile.class);
+        profile.putExtra("id", id);
         startActivity(profile);
     }
 

@@ -1,13 +1,36 @@
 package com.example.medicalapp;
 
-public class Person {
-    private int id;
-    private String name, town, date, email, phone, snils, passport, password;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Person implements Parcelable {
+    private String id, name, town, date, email, phone, snils, passport, password;
+
+    public static final Creator<Person> CREATOR = new Creator<Person>() {
+        @Override
+        public Person createFromParcel(Parcel source) {
+            String id = source.readString();
+            String name = source.readString();
+            String town = source.readString();
+            String date = source.readString();
+            String email = source.readString();
+            String phone = source.readString();
+            String snils = source.readString();
+            String passport = source.readString();
+            String password = source.readString();
+            return new Person(id, name, town, date, email, phone, snils, passport, password);
+        }
+
+        @Override
+        public Person[] newArray(int size) {
+            return new Person[size];
+        }
+    };
 
     public Person() {
     }
 
-    public Person(int id, String name, String town, String date, String email, String phone, String snils, String passport, String password) {
+    public Person(String id, String name, String town, String date, String email, String phone, String snils, String passport, String password) {
         this.id = id;
         this.name = name;
         this.town = town;
@@ -19,11 +42,11 @@ public class Person {
         this.password = password;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -89,5 +112,24 @@ public class Person {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(name);
+        parcel.writeString(town);
+        parcel.writeString(date);
+        parcel.writeString(email);
+        parcel.writeString(phone);
+        parcel.writeString(snils);
+        parcel.writeString(passport);
+        parcel.writeString(password);
+
     }
 }

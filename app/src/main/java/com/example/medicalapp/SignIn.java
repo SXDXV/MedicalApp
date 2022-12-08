@@ -29,6 +29,7 @@ public class SignIn extends AppCompatActivity {
 
     Intent signUp;
     Intent main;
+    String userID;
     final String TAG = "logfire";
 
     private FirebaseAuth mAuth;
@@ -50,73 +51,22 @@ public class SignIn extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.textEmailin);
         pass = findViewById(R.id.textPasswordin);
-
         sign(String.valueOf(email.getEditText().getText()),String.valueOf(pass.getEditText().getText()));
-
-        startActivity(main);
     }
 
-    public Person person;
-
-    //Query searchMatch = FirebaseDatabase.getInstance().getReference().child("Users").equals(email.toString());
-
-    //final DatabaseReference ref = database.
-
     public void sign(String email, String password){
-        database = FirebaseDatabase.getInstance().getReference("Users");
-
-        final DatabaseReference ref = database;
-        ref.orderByChild("email").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                person = snapshot.getValue(Person.class);
-                String name = person.getName();
-                String nameLast = person.getDate();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        //static final var query =
-//        database.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                snapshot.child("Users").
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
-                            //person = new Person();
-
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            userID = user.getUid();
+
+                            main.putExtra("id", userID);
+
+                            startActivity(main);
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                         }

@@ -32,12 +32,11 @@ public class SignUp extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference database;
+    String userID;
     TextInputLayout email;
     TextInputLayout name;
     TextInputLayout date;
     TextInputLayout pass;
-
-    Map<String, Object> user = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +55,6 @@ public class SignUp extends AppCompatActivity {
         pass = findViewById(R.id.textPasswordup);
 
         registration(String.valueOf(email.getEditText().getText()),String.valueOf(pass.getEditText().getText()));
-        shareToBase();
-        startActivity(signIn);
     }
 
     public void registration(String email, String password){
@@ -67,6 +64,10 @@ public class SignUp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
+                            userID = user.getUid();
+
+                            shareToBase();
+                            startActivity(signIn);
                             Log.d(TAG, "createUserWithEmail:success");
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -79,19 +80,18 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void shareToBase(){
-        try {
+//        try {
             database = FirebaseDatabase.getInstance().getReference("Users");
-            Random rand = new Random();
 
             Person demoPerson = new Person(
-                    rand.nextInt(1000000000),
+                    userID,
                     String.valueOf(name.getEditText().getText()),
-                    "",
+                    "town",
                     String.valueOf(date.getEditText().getText()),
                     String.valueOf(email.getEditText().getText()),
-                    "",
-                    "",
-                    "",
+                    "phone",
+                    "snils",
+                    "passport",
                     String.valueOf(pass.getEditText().getText())
             );
 //            user.put("name",String.valueOf(name.getEditText().getText()));
@@ -106,12 +106,12 @@ public class SignUp extends AppCompatActivity {
             //myRef.setValue(user);
             //database.child("users").setValue(demoPerson);
             database.child(String.valueOf(demoPerson.getId())).setValue(demoPerson);
-        }catch (Exception exception){
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    exception.toString(), Toast.LENGTH_SHORT);
-            toast.show();
-            Log.w(TAG, "createUserWithEmail:failure", exception);
-        }
+//        }catch (Exception exception){
+//            Toast toast = Toast.makeText(getApplicationContext(),
+//                    exception.toString(), Toast.LENGTH_SHORT);
+//            toast.show();
+//            Log.w(TAG, "createUserWithEmail:failure", exception);
+//        }
     }
 
     public void toAuth (View view){
