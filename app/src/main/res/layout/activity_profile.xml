@@ -110,7 +110,7 @@
                 android:layout_marginRight="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="right"
-                android:text="Москва"
+                android:text="town"
                 android:textColor="@color/textGray"
                 android:textSize="20dp" />
 
@@ -146,7 +146,7 @@
                 android:layout_marginRight="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="right"
-                android:text="01.01.1997"
+                android:text="date"
                 android:textColor="@color/textGray"
                 android:textSize="20dp" />
 
@@ -182,7 +182,7 @@
                 android:layout_marginRight="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="right"
-                android:text="mail@gmail.com"
+                android:text="email"
                 android:textColor="@color/textGray"
                 android:textSize="20dp" />
 
@@ -218,7 +218,7 @@
                 android:layout_marginRight="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="right"
-                android:text="+79110218234"
+                android:text="phone"
                 android:textColor="@color/textGray"
                 android:textSize="20dp" />
 
@@ -247,14 +247,14 @@
 
 
             <TextView
-                android:id="@+id/textViewPassport"
+                android:id="@+id/textViewSnils"
                 android:layout_width="158dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
                 android:layout_marginRight="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="right"
-                android:text="11223344556"
+                android:text="snils"
                 android:textColor="@color/textGray"
                 android:textSize="20dp" />
 
@@ -283,14 +283,14 @@
 
 
             <TextView
-                android:id="@+id/textViewSnils"
+                android:id="@+id/textViewPassport"
                 android:layout_width="130dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
                 android:layout_marginRight="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="right"
-                android:text="6666 666666"
+                android:text="passport"
                 android:textColor="@color/textGray"
                 android:textSize="20dp" />
 

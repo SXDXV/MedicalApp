@@ -27,9 +27,6 @@ public class Person implements Parcelable {
         }
     };
 
-    public Person() {
-    }
-
     public Person(String id, String name, String town, String date, String email, String phone, String snils, String passport, String password) {
         this.id = id;
         this.name = name;
@@ -40,6 +37,10 @@ public class Person implements Parcelable {
         this.snils = snils;
         this.passport = passport;
         this.password = password;
+    }
+
+    public Person() {
+
     }
 
     public String getId() {

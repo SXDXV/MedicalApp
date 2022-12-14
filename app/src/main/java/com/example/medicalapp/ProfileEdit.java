@@ -15,6 +15,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProfileEdit extends AppCompatActivity {
 
     TextView TVname;
@@ -24,6 +27,8 @@ public class ProfileEdit extends AppCompatActivity {
     EditText TVphone;
     EditText TVsnils;
     EditText TVpassport;
+
+    private DatabaseReference database;
 
     String id;
     Person person;
@@ -50,7 +55,6 @@ public class ProfileEdit extends AppCompatActivity {
         TVphone = findViewById(R.id.editTextPhone);
         TVsnils = findViewById(R.id.editTextSnils);
         TVpassport = findViewById(R.id.editTextPassport);
-        setData();
     }
 
     public void setData(){
@@ -70,7 +74,6 @@ public class ProfileEdit extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 person = snapshot.child(id).getValue(Person.class);
-                initialize();
             }
 
             @Override
@@ -81,6 +84,24 @@ public class ProfileEdit extends AppCompatActivity {
     }
 
     public void saveInfo(View view){
+        initialize();
+        person.setTown(TVtown.getText().toString());
+        person.setDate(TVdate.getText().toString());
+        person.setEmail(TVemail.getText().toString());
+        person.setPhone(TVphone.getText().toString());
+        person.setSnils(TVsnils.getText().toString());
+        person.setPassport(TVpassport.getText().toString());
+
+        database = FirebaseDatabase.getInstance().getReference("Users");
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put(id + "/" + "town", person.getTown());
+        childUpdates.put(id + "/" + "date", person.getDate());
+        childUpdates.put(id + "/" + "email", person.getEmail());
+        childUpdates.put(id + "/" + "phone", person.getPhone());
+        childUpdates.put(id + "/" + "snils", person.getSnils());
+        childUpdates.put(id + "/" + "passport", person.getPassport());
+        database.updateChildren(childUpdates);
+
         Intent profile = new Intent(this, Main.class);
         profile.putExtra("id", id);
         startActivity(profile);

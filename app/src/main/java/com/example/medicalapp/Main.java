@@ -145,6 +145,7 @@ public class Main extends AppCompatActivity {
                 serviceCall.putExtra("title",services.getTitle());
                 serviceCall.putExtra("desc",services.getDescription());
                 serviceCall.putExtra("img",services.getImg());
+                serviceCall.putExtra("id", id);
                 startActivity(serviceCall);
             }
         };

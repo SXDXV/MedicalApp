@@ -80,38 +80,21 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void shareToBase(){
-//        try {
-            database = FirebaseDatabase.getInstance().getReference("Users");
+        database = FirebaseDatabase.getInstance().getReference("Users");
 
-            Person demoPerson = new Person(
-                    userID,
-                    String.valueOf(name.getEditText().getText()),
-                    "town",
-                    String.valueOf(date.getEditText().getText()),
-                    String.valueOf(email.getEditText().getText()),
-                    "phone",
-                    "snils",
-                    "passport",
-                    String.valueOf(pass.getEditText().getText())
-            );
-//            user.put("name",String.valueOf(name.getEditText().getText()));
-//            user.put("town",null);
-//            user.put("date",String.valueOf(date.getEditText().getText()));
-//            user.put("email",String.valueOf(email.getEditText().getText()));
-//            user.put("phone",null);
-//            user.put("snils",null);
-//            user.put("passport",null);
-//            user.put("pass",String.valueOf(pass.getEditText().getText()));
+        Person demoPerson = new Person(
+                userID,
+                String.valueOf(name.getEditText().getText()),
+                "town",
+                String.valueOf(date.getEditText().getText()),
+                String.valueOf(email.getEditText().getText()),
+                "phone",
+                "snils",
+                "passport",
+                String.valueOf(pass.getEditText().getText())
+        );
 
-            //myRef.setValue(user);
-            //database.child("users").setValue(demoPerson);
-            database.child(String.valueOf(demoPerson.getId())).setValue(demoPerson);
-//        }catch (Exception exception){
-//            Toast toast = Toast.makeText(getApplicationContext(),
-//                    exception.toString(), Toast.LENGTH_SHORT);
-//            toast.show();
-//            Log.w(TAG, "createUserWithEmail:failure", exception);
-//        }
+        database.child(String.valueOf(demoPerson.getId())).setValue(demoPerson);
     }
 
     public void toAuth (View view){

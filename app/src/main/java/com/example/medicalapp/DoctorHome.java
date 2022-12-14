@@ -22,6 +22,8 @@ public class DoctorHome extends AppCompatActivity {
     }
 
     public void entry(View view){
+
+
         Toast toast = Toast.makeText(getApplicationContext(),
                 "Вы успешно записаны. Вам позвонят позже для согласования времени.", Toast.LENGTH_LONG);
         toast.show();

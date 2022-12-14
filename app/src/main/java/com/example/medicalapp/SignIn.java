@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,8 +26,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.checkerframework.checker.units.qual.C;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class SignIn extends AppCompatActivity {
 
+//    try {
+//
+//    }catch (Exception exception){
+//
+//    }
     Intent signUp;
     Intent main;
     String userID;
@@ -34,6 +43,7 @@ public class SignIn extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference database;
+    int indicator = 0;
     TextInputLayout email;
     TextInputLayout pass;
 
@@ -51,8 +61,37 @@ public class SignIn extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.textEmailin);
         pass = findViewById(R.id.textPasswordin);
-        sign(String.valueOf(email.getEditText().getText()),String.valueOf(pass.getEditText().getText()));
+        try {
+            sign(String.valueOf(email.getEditText().getText()),String.valueOf(pass.getEditText().getText()));
+        }catch (Exception exception){
+            //email.setErrorTextColor(getResources().getColor(Integer.parseInt(R.color.text)));
+            email.setError(getResources().getString(R.string.empty));
+            pass.setError(getResources().getString(R.string.empty));
+
+            Timer myTimer;
+            myTimer = new Timer();
+
+            myTimer.schedule(new TimerTask() {
+                public void run() {
+                    timerTick();
+                }
+            }, 0, 500);
+        }
     }
+
+    private void timerTick() {
+        this.runOnUiThread(doTask);
+    }
+
+    private Runnable doTask = new Runnable() {
+        public void run() {
+            if (indicator == 3){
+                email.setError("");
+                pass.setError("");
+            }
+            indicator++;
+        }
+    };
 
     public void sign(String email, String password){
         mAuth.signInWithEmailAndPassword(email, password)
@@ -68,7 +107,9 @@ public class SignIn extends AppCompatActivity {
 
                             startActivity(main);
                         } else {
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast toast = Toast.makeText(getApplicationContext(),
+                                    "Возникли проблемы со входом, проверьте правильность введенных данных", Toast.LENGTH_LONG);
+                            toast.show();
                         }
                     }
                 });

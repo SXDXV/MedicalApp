@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 public class ServiseChoose extends AppCompatActivity {
 
+    String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,7 @@ public class ServiseChoose extends AppCompatActivity {
         int img = fromMain.getIntExtra("img", 0);
         String title = fromMain.getStringExtra("title");
         String desc = fromMain.getStringExtra("desc");
+        id = fromMain.getStringExtra("id");
 
         image.setImageResource(img);
         TXTtitle.setText(title);
@@ -39,14 +42,16 @@ public class ServiseChoose extends AppCompatActivity {
     public void toDoctor(View view){
         TextView title = findViewById(R.id.TVtitle);
         Intent doc = new Intent(this, Doctor.class);
-        doc.putExtra("title",title.getText());;
+        doc.putExtra("title",title.getText());
+        doc.putExtra("id", id);
         startActivity(doc);
     }
 
     public void toHome(View view){
         TextView title = findViewById(R.id.TVtitle);
         Intent docHome = new Intent(this, DoctorHome.class);
-        docHome.putExtra("title",title.getText());;
+        docHome.putExtra("title",title.getText());
+        docHome.putExtra("id", id);
         startActivity(docHome);
     }
 }
