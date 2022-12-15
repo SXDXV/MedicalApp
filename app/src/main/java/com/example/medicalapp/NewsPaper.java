@@ -22,7 +22,7 @@ public class NewsPaper extends AppCompatActivity {
 
         int img = fromMain.getIntExtra("img", 0);
         String title = fromMain.getStringExtra("title");
-        String desc = fromMain.getStringExtra("desc");
+        String desc = fromMain.getStringExtra("fulldesc");
 
         image.setImageResource(img);
         TXTtitle.setText(title);

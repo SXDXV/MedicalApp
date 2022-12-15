@@ -36,6 +36,7 @@ public class ServiseChoose extends AppCompatActivity {
 
     public void toMain(View view){
         Intent main = new Intent(this, Main.class);
+        main.putExtra("id", id);
         startActivity(main);
     }
 

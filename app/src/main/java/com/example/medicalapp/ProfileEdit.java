@@ -39,6 +39,7 @@ public class ProfileEdit extends AppCompatActivity {
         setContentView(R.layout.activity_profile_edit);
 
         id = getIntent().getStringExtra("id");
+        baseFill(id);
         base(id);
     }
 
@@ -65,6 +66,24 @@ public class ProfileEdit extends AppCompatActivity {
         TVphone.setText(person.getPhone());
         TVsnils.setText(person.getSnils());
         TVpassport.setText(person.getPassport());
+    }
+
+    public void baseFill(String id){
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                person = snapshot.child(id).getValue(Person.class);
+                initialize();
+                setData();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public void base(String id){

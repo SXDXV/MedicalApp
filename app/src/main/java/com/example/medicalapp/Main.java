@@ -109,6 +109,7 @@ public class Main extends AppCompatActivity {
             public void onNewsClick(RecMain news, int position) {
                 newCall.putExtra("title",news.getTitle());
                 newCall.putExtra("desc",news.getDescription());
+                newCall.putExtra("fulldesc",news.getFullDescription());
                 newCall.putExtra("img",news.getImg());
                 startActivity(newCall);
             }
@@ -158,10 +159,22 @@ public class Main extends AppCompatActivity {
     public ArrayList<RecMain> createNewsList() {
 
         ArrayList<RecMain> news = new ArrayList<>();
-        news.add(new RecMain("Мы открылись!", "Представляете?", R.drawable.news_clinique));
-        news.add(new RecMain("Вакцинация.", "*Без QR:(", R.drawable.news_vac));
-        news.add(new RecMain("Наши врачи", "Устроили забастовку.", R.drawable.news_doctor));
-        news.add(new RecMain("Новые филиалы", "В странах европы.", R.drawable.news_europe));
+        news.add(new RecMain("Мы открылись!", "Представляете?", R.drawable.news_clinique,
+                "Открытие нашего нового комплекса вы можете сами оценить по адресу " +
+                        "Загородный проспект, 8, Санкт-Петербург. В ассортименте наших услуг вы " +
+                        "можете заказать анализ крови, тест на сифилис, тест на беременность и " +
+                        "коронная процедура - тест на ковид"));
+        news.add(new RecMain("Вакцинация.", "*Без QR:(", R.drawable.news_vac,
+                "Вакцинация без получения QR-кода происходит в частном порядке. " +
+                        "Отсутствие кода обусловлено отменой федеральных ограничейний. Вакцинация осуществляется " +
+                        "исключительно для личного спокойствия"));
+        news.add(new RecMain("Наши врачи", "Устроили забастовку.", R.drawable.news_doctor,
+                "Врачи наших клиник были немного недовольны своей зарплатой. " +
+                        "Каждый опрошенный врач считает, что получает слишком большую сумму. " +
+                        "Внутренний конфликт улажен, зарплаты докторам урезали."));
+        news.add(new RecMain("Новые филиалы", "В странах европы.", R.drawable.news_europe,
+                "Новые филиалы открыли в следующих странах: " +
+                        "Эстония, Латвия, Литва, Польша, германия, Италия и Испания."));
 
         return news;
     }
@@ -169,10 +182,10 @@ public class Main extends AppCompatActivity {
     public ArrayList<RecMain> createServicesList() {
 
         ArrayList<RecMain> achivments = new ArrayList<>();
-        achivments.add(new RecMain("Анализ крови", "общий", R.drawable.service_blood));
-        achivments.add(new RecMain("Силифилс", "анализ", R.drawable.service_syph));
-        achivments.add(new RecMain("Коронавирус", "ПЦР-тест", R.drawable.service_covid));
-        achivments.add(new RecMain("Беременность", "быстрый тест", R.drawable.service_pregnant));
+        achivments.add(new RecMain("Анализ крови", "общий", R.drawable.service_blood, ""));
+        achivments.add(new RecMain("Силифилс", "анализ", R.drawable.service_syph, ""));
+        achivments.add(new RecMain("Коронавирус", "ПЦР-тест", R.drawable.service_covid, ""));
+        achivments.add(new RecMain("Беременность", "быстрый тест", R.drawable.service_pregnant, ""));
 
         return achivments;
     }
@@ -180,10 +193,10 @@ public class Main extends AppCompatActivity {
     public ArrayList<RecMain> createAchivmentsList() {
 
         ArrayList<RecMain> services = new ArrayList<>();
-        services.add(new RecMain("10 лет", "на рынке", R.drawable.achivments_time));
-        services.add(new RecMain("Рейтинг", "выше аналогов", R.drawable.achivments_3stars));
-        services.add(new RecMain("Доверие", "10 000 клиентов", R.drawable.achivments_trust));
-        services.add(new RecMain("Гарантия", "лучшего качества", R.drawable.achivments_quality));
+        services.add(new RecMain("10 лет", "на рынке", R.drawable.achivments_time, ""));
+        services.add(new RecMain("Рейтинг", "выше аналогов", R.drawable.achivments_3stars, ""));
+        services.add(new RecMain("Доверие", "10 000 клиентов", R.drawable.achivments_trust, ""));
+        services.add(new RecMain("Гарантия", "лучшего качества", R.drawable.achivments_quality, ""));
 
         return services;
     }
