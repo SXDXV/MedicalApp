@@ -76,6 +76,7 @@ public class Profile extends AppCompatActivity {
 
     public void toMain(View view){
         Intent main = new Intent(this, Main.class);
+        main.putExtra("id", id);
         startActivity(main);
     }
 
@@ -83,5 +84,11 @@ public class Profile extends AppCompatActivity {
         Intent edit = new Intent(this, ProfileEdit.class);
         edit.putExtra("id", id);
         startActivity(edit);
+    }
+
+    public void toAppointments(View view){
+        Intent appo = new Intent(this, AppointmentCollection.class);
+        appo.putExtra("id", id);
+        startActivity(appo);
     }
 }
